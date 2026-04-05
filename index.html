@@ -47,7 +47,6 @@
 
         .nav-scrolled {
             background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             padding-top: 0.75rem;
             padding-bottom: 0.75rem;
@@ -58,7 +57,6 @@
             color: transparent;
         }
 
-        /* 圖片載入失敗樣式 */
         .img-fallback {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             display: flex;
@@ -68,7 +66,6 @@
             overflow: hidden;
         }
 
-        /* 捲動顯現動畫 */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -78,16 +75,37 @@
             opacity: 1;
             transform: translateY(0);
         }
+        
+        .pill-btn {
+            display: inline-flex;
+            padding: 4px 24px;
+            background-color: var(--tennis-green);
+            color: #000;
+            border-radius: 9999px;
+            font-weight: 800;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        .pill-btn:hover {
+            filter: brightness(1.1);
+            transform: scale(1.05);
+        }
+
+        .social-icon-btn {
+            @apply flex flex-col items-center justify-center p-8 rounded-[2rem] bg-white/5 border border-white/5 hover:border-[var(--tennis-green)]/30 hover:bg-white/10 transition-all duration-500 text-white hover:scale-105;
+        }
+
+        .social-icon {
+            @apply w-14 h-14 rounded-full bg-white/5 flex items-center justify-center hover:bg-[var(--tennis-green)] hover:text-slate-950 transition-all duration-500;
+        }
     </style>
 </head>
 <body class="overflow-x-hidden">
 
-    <!-- Facebook SDK -->
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v18.0"></script>
-
     <!-- 導覽列 -->
-    <nav id="main-nav" class="fixed w-full z-50 transition-all duration-500 px-6 py-6">
+    <nav id="main-nav" class="fixed w-full z-50 transition-all duration-300 px-6 py-6">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="text-2xl font-black tracking-tighter text-gradient italic">RAY HO</div>
             
@@ -96,7 +114,8 @@
                     <a href="#home" class="hover:text-[var(--tennis-green)] hover:opacity-100 transition" data-zh="首頁" data-en="Home">首頁</a>
                     <a href="#bio" class="hover:text-[var(--tennis-green)] hover:opacity-100 transition" data-zh="個人檔案" data-en="Bio">個人檔案</a>
                     <a href="#gallery" class="hover:text-[var(--tennis-green)] hover:opacity-100 transition" data-zh="榮耀影像" data-en="Gallery">榮耀影像</a>
-                    <a href="#facebook" class="hover:text-[var(--tennis-green)] hover:opacity-100 transition" data-zh="最新動態" data-en="News">最新動態</a>
+                    <a href="#news" class="hover:text-[var(--tennis-green)] hover:opacity-100 transition" data-zh="最新動態" data-en="News">最新動態</a>
+                    <a href="#social" class="hover:text-[var(--tennis-green)] hover:opacity-100 transition" data-zh="社群追蹤" data-en="Social">社群追蹤</a>
                 </div>
 
                 <button id="lang-toggle" class="group flex items-center gap-2 px-5 py-2 rounded-full border border-white/10 hover:border-[var(--tennis-green)] hover:bg-[var(--tennis-green)]/5 transition-all">
@@ -107,30 +126,33 @@
         </div>
     </nav>
 
-    <!-- 英雄區塊 -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-gradient-to-b from-slate-950/20 via-slate-950/60 to-slate-950"></div>
-            <img src="8.jpg" alt="Hero" class="w-full h-full object-cover opacity-30 scale-105 transition-transform duration-1000" 
-                 onerror="this.src='https://images.unsplash.com/photo-1595435063821-26c7104ae05d?auto=format&fit=crop&q=80'; this.style.opacity='0.1';">
-        </div>
-
+    <!-- 英雄區塊 (Banner) -->
+    <section id="home" class="relative min-h-[700px] flex items-center justify-center pt-20 px-6 overflow-hidden bg-[var(--dark-navy)]">
         <div class="relative z-10 max-w-7xl mx-auto text-center">
-            <div class="inline-flex items-center gap-2 px-5 py-1.5 rounded-full border border-[var(--tennis-green)]/20 bg-[var(--tennis-green)]/5 text-[var(--tennis-green)] text-[10px] font-black mb-10 tracking-[0.3em] uppercase reveal">
+            <div class="reveal active mb-8">
+                <button class="pill-btn">
+                    <span data-zh="ATP 職業選手" data-en="ATP PROFESSIONAL PLAYER">ATP 職業選手</span>
+                </button>
+            </div>
+            
+            <div class="inline-flex items-center gap-2 px-5 py-1.5 rounded-full border border-white/10 bg-white/5 text-white text-[10px] font-black mb-10 tracking-[0.3em] uppercase reveal active" style="transition-delay: 0.1s">
                 <span class="relative flex h-2 w-2">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--tennis-green)] opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-[var(--tennis-green)]"></span>
                 </span>
                 <span data-zh="Career High World No. 60 (2026) | 台灣雙打第一人" data-en="Career High World No. 60 (2026) | Taiwan's No. 1 Doubles Player">Career High World No. 60 (2026) | 台灣雙打第一人</span>
             </div>
-            <h1 class="text-7xl md:text-[10rem] font-black mb-6 tracking-tighter italic text-white reveal leading-none" style="transition-delay: 0.1s">
+
+            <h1 class="text-7xl md:text-[10rem] font-black mb-6 tracking-tighter italic text-white reveal active leading-none" style="transition-delay: 0.2s">
                 <span data-zh="何承叡" data-en="RAY HO">何承叡</span> <br class="md:hidden"> <span class="text-gradient">RAY HO</span>
             </h1>
-            <p class="text-lg md:text-2xl text-slate-400 font-light max-w-3xl mx-auto mb-14 leading-relaxed reveal" style="transition-delay: 0.2s">
+
+            <p class="text-lg md:text-2xl text-slate-400 font-light max-w-3xl mx-auto mb-14 leading-relaxed reveal active" style="transition-delay: 0.3s">
                 <span data-zh="「夢想，不是說出來的，是一拍一拍打出來的。」" data-en="“Dreams aren't spoken; they are hit stroke by stroke.”">「夢想，不是說出來的，是一拍一拍打出來的。」</span><br>
                 <span class="text-base md:text-lg opacity-50 mt-4 block italic font-serif" data-zh="2026 ATP 500 鹿特丹公開賽 男雙亞軍" data-en="2026 ATP 500 Rotterdam Open Men's Doubles Runner-up">2026 ATP 500 鹿特丹公開賽 男雙亞軍</span>
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-6 reveal" style="transition-delay: 0.3s">
+
+            <div class="flex flex-col sm:flex-row justify-center gap-6 reveal active" style="transition-delay: 0.4s">
                 <a href="#gallery" class="px-12 py-5 bg-[var(--tennis-green)] text-slate-950 font-black rounded-full hover:scale-105 active:scale-95 transition-all flex items-center justify-center uppercase text-xs tracking-widest shadow-2xl shadow-[var(--tennis-green)]/20">
                     <span data-zh="榮耀紀錄" data-en="Hall of Fame">榮耀紀錄</span> <i data-lucide="award" class="ml-2 w-4 h-4"></i>
                 </a>
@@ -147,7 +169,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
                 <div class="relative reveal">
                     <div class="aspect-[4/5] rounded-[2rem] bg-slate-900 overflow-hidden border border-white/5 relative shadow-2xl group">
-                         <img src="2.jpg" id="bio-img" alt="Ray Ho Profile" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
+                         <img src="https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/592668397_122247747824084853_8563483998505613243_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=qMzSiY71HQQQ7kNvwF5wvLF&_nc_oc=AdoP1vP4FbHWBN8Fefr4YjlkxQG_ckAKjedXZIYmyIpqv9F-HoHSL8xI2k4mW7dxgS0&_nc_zt=23&_nc_ht=scontent-tpe1-1.xx&_nc_gid=yh5uZDxfaa3FHE-jOhuEgw&_nc_ss=7a389&oh=00_Af3pC6edkR-0xRXwLxzPSmks56f_fncqk5YXLHY5x_u1bA&oe=69D7FD15" id="bio-img" alt="Ray Ho Profile" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
                               onerror="handleImgError(this, 'user', 'PROFILE PHOTO')">
                          <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
                          <div class="absolute bottom-10 left-10">
@@ -200,95 +222,141 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- 1. 全運會 -->
                 <div class="gallery-item group relative aspect-[4/5] rounded-[2rem] overflow-hidden card-blur border border-white/5 reveal hover-lift">
-                    <img src="9.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                         onerror="handleImgError(this, 'award', 'National Games')">
+                    <img src="https://www.csr.ntnu.edu.tw/wp-content/uploads/2026/02/a5d9ef56d6776072a65b518f09596bc4.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="handleImgError(this, 'award', 'ATP 500 ROTTERDAM')">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-90 transition-opacity"></div>
                     <div class="absolute bottom-8 left-8 right-8">
-                        <div class="text-[var(--tennis-green)] font-black text-[10px] tracking-widest mb-2 italic">2025 HIGHLIGHT</div>
-                        <h3 class="text-2xl font-bold text-white leading-tight" data-zh="114年全運會三金大滿貫" data-en="National Games Triple Gold">114年全運會三金大滿貫</h3>
+                        <div class="text-[var(--tennis-green)] font-black text-[10px] tracking-widest mb-2 italic">2026 ATP 500</div>
+                        <h3 class="text-2xl font-bold text-white leading-tight" data-zh="鹿特丹男雙亞軍" data-en="Rotterdam Men's Doubles Runner-up">鹿特丹男雙亞軍</h3>
                     </div>
                 </div>
-                <!-- 2. 蘇州 -->
                 <div class="gallery-item group relative aspect-[4/5] rounded-[2rem] overflow-hidden card-blur border border-white/5 reveal hover-lift" style="transition-delay: 0.1s">
-                    <img src="8.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                         onerror="handleImgError(this, 'trophy', 'Suzhou Title')">
+                    <img src="https://www.ydn.com.tw/api/ugc_imagehandler.ashx?NFID=996903" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="handleImgError(this, 'award', 'NATIONAL PRIDE')">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-90 transition-opacity"></div>
                     <div class="absolute bottom-8 left-8 right-8">
-                        <div class="text-[var(--tennis-green)] font-black text-[10px] tracking-widest mb-2 italic">ATP CHALLENGER</div>
-                        <h3 class="text-2xl font-bold text-white leading-tight" data-zh="蘇州公開賽 男雙冠軍" data-en="Suzhou Open Champions">蘇州公開賽 男雙冠軍</h3>
+                        <div class="text-[var(--tennis-green)] font-black text-[10px] tracking-widest mb-2 italic">NATIONAL GAMES</div>
+                        <h3 class="text-2xl font-bold text-white leading-tight" data-zh="全運會三金" data-en="National Games 3 Golds">全運會三金</h3>
                     </div>
                 </div>
-                <!-- 3. 波爾圖 -->
                 <div class="gallery-item group relative aspect-[4/5] rounded-[2rem] overflow-hidden card-blur border border-white/5 reveal hover-lift" style="transition-delay: 0.2s">
-                    <img src="7.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                         onerror="handleImgError(this, 'medal', 'Porto Victory')">
+                    <img src="https://media.nownews.com/nn_media/thumbnail/2024/05/1716036461312-42d6ab9eb8dc4352b4853e01bdc2cc5a-1200x800.webp?unShow=false" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="handleImgError(this, 'award', 'COURT MOMENT')">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-90 transition-opacity"></div>
                     <div class="absolute bottom-8 left-8 right-8">
-                        <div class="text-[var(--tennis-green)] font-black text-[10px] tracking-widest mb-2 italic">EUROPEAN TOUR</div>
-                        <h3 class="text-2xl font-bold text-white leading-tight" data-zh="波爾圖挑戰賽 奪冠紀錄" data-en="Porto Open Victory">波爾圖挑戰賽 奪冠紀錄</h3>
+                        <div class="text-[var(--tennis-green)] font-black text-[10px] tracking-widest mb-2 italic">INTENSE BATTLE</div>
+                        <h3 class="text-2xl font-bold text-white leading-tight" data-zh="賽場拼搏 精彩瞬間" data-en="Tennis Spirit on Court">賽場拼搏 精彩瞬間</h3>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Facebook 最新動態 -->
-    <section id="facebook" class="py-32 px-6 relative overflow-hidden bg-slate-950">
-        <div class="max-w-7xl mx-auto text-center">
-            <div class="mb-20 reveal">
+    <!-- 最新動態 - 新聞區塊 -->
+    <section id="news" class="py-32 px-6 relative overflow-hidden bg-slate-950">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-20 reveal text-center">
                 <h2 class="text-5xl md:text-7xl font-black mb-8 italic uppercase text-white tracking-tighter leading-none">
                     <span data-zh="最新動態" data-en="Latest">最新動態</span> <br>
-                    <span class="text-[var(--tennis-green)]">Facebook</span>
+                    <span class="text-[var(--tennis-green)]">News Portal</span>
                 </h2>
-                <p class="text-slate-400 max-w-2xl mx-auto font-light" data-zh="獲取第一手的賽事資訊與我的職業生活紀實。" data-en="Get first-hand tournament updates and insights into my professional life.">獲取第一手的賽事資訊與我的職業生活紀實。</p>
+                <p class="text-slate-400 max-w-2xl mx-auto font-light" data-zh="獲取第一手的賽事新聞與我的職業生活紀錄。" data-en="Get the latest tournament news and insights into my professional career.">獲取第一手的賽事新聞與我的職業生活紀錄。</p>
             </div>
 
-            <div class="flex justify-center reveal">
-                <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-2xl w-full max-w-[500px] border border-white/10">
-                    <div class="fb-page" 
-                        data-href="https://www.facebook.com/profile.php?id=61552545600627" 
-                        data-tabs="timeline" 
-                        data-width="500" 
-                        data-height="600" 
-                        data-small-header="false" 
-                        data-adapt-container-width="true" 
-                        data-hide-cover="false" 
-                        data-show-facepile="true">
-                        <blockquote cite="https://www.facebook.com/profile.php?id=61552545600627" class="fb-xfbml-parse-ignore">
-                            <a href="https://www.facebook.com/profile.php?id=61552545600627">何承叡 Ray Ho</a>
-                        </blockquote>
-                    </div>
+            <div class="max-w-4xl mx-auto reveal">
+                <div class="space-y-6">
+                    <!-- 鹿特丹新聞 -->
+                    <a href="https://sports.ltn.com.tw/news/breakingnews/5344432" target="_blank" class="group p-8 rounded-[2rem] bg-white/5 border border-white/5 hover:border-[var(--tennis-green)]/30 transition-all cursor-pointer block hover-lift">
+                        <div class="text-[var(--tennis-green)] text-[10px] font-black mb-3 flex justify-between items-center">
+                            <span>2026.02.16</span>
+                            <i data-lucide="external-link" class="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white group-hover:text-[var(--tennis-green)] transition mb-4" data-zh="ATP 500 鹿特丹公開賽 榮獲亞軍，排名創生涯新高第 60 名" data-en="Rotterdam Open (ATP 500) Runner-up, Career High World No. 60">ATP 500 鹿特丹公開賽 榮獲亞軍，排名創生涯新高第 60 名</h4>
+                        <p class="text-slate-400 leading-relaxed text-sm" data-zh="攜手 Hendrik Jebens 展現精湛默契，創下台灣選手在該等級賽事最佳紀錄。" data-en="Partnered with Hendrik Jebens, setting the best record for a Taiwanese player in this category.">攜手 Hendrik Jebens 展現精湛默契，創下台灣選手在該等級賽事最佳紀錄。</p>
+                    </a>
+                    
+                    <!-- 澳網新聞 -->
+                    <a href="https://www.chinatimes.com/realtimenews/20260122002116-260403?chdtv" target="_blank" class="group p-8 rounded-[2rem] bg-white/5 border border-white/5 hover:border-[var(--tennis-green)]/30 transition-all cursor-pointer block hover-lift">
+                        <div class="text-[var(--tennis-green)] text-[10px] font-black mb-3 flex justify-between items-center">
+                            <span>2026.01</span>
+                            <i data-lucide="external-link" class="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white group-hover:text-[var(--tennis-green)] transition mb-4" data-zh="澳洲網球公開賽 男雙成功闖入第二輪" data-en="Australian Open: Reaches Second Round in Men's Doubles">澳洲網球公開賽 男雙成功闖入第二輪</h4>
+                        <p class="text-slate-400 leading-relaxed text-sm" data-zh="在墨爾本球場穩定發揮，持續在大滿貫賽場累積寶貴經驗。" data-en="Consistent performance at Melbourne Park, gaining valuable experience on the Grand Slam stage.">在墨爾本球場穩定發揮，持續在大滿貫賽場累積寶貴經驗。</p>
+                    </a>
+
+                    <!-- 上海新聞 -->
+                    <a href="https://sports.ltn.com.tw/news/breakingnews/5197681" target="_blank" class="group p-8 rounded-[2rem] bg-white/5 border border-white/5 hover:border-[var(--tennis-green)]/30 transition-all cursor-pointer block hover-lift">
+                        <div class="text-[var(--tennis-green)] text-[10px] font-black mb-3 flex justify-between items-center">
+                            <span>2025.10</span>
+                            <i data-lucide="external-link" class="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white group-hover:text-[var(--tennis-green)] transition mb-4" data-zh="上海大師賽 締造台灣男網首勝紀錄" data-en="Shanghai Masters: First Win for Taiwan Men's Tennis">上海大師賽 締造台灣男網首勝紀錄</h4>
+                        <p class="text-slate-400 leading-relaxed text-sm" data-zh="於亞洲最大規模賽事之一創下紀錄，證明台灣雙打實力足與世界頂尖抗衡。" data-en="Set a historic milestone in one of Asia's biggest tournaments, proving Taiwan's doubles caliber.">於亞洲最大規模賽事之一創下紀錄，證明台灣雙打實力足與世界頂尖抗衡。</p>
+                    </a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 社群追蹤區塊 -->
+    <section id="social" class="py-32 px-6 relative overflow-hidden bg-slate-900/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-20 reveal text-center">
+                <h2 class="text-5xl md:text-7xl font-black mb-8 italic uppercase text-white tracking-tighter leading-none">
+                    <span data-zh="社群關注" data-en="Social">社群關注</span> <br>
+                    <span class="text-[var(--tennis-green)]">Connect</span>
+                </h2>
+                <p class="text-slate-400 max-w-2xl mx-auto font-light" data-zh="追蹤我的官方社群，獲取即時動態與我的職業生活紀實。" data-en="Follow my official social channels for real-time updates and behind-the-scenes content.">追蹤我的官方社群，獲取即時動態與我的職業生活紀實。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
+                <!-- FB -->
+                <a href="https://www.facebook.com/people/%E4%BD%95%E6%89%BF%E5%8F%A1%E7%B6%B2%E7%90%83/61552545600627/" target="_blank" class="social-icon-btn group">
+                    <div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mb-6 group-hover:bg-[var(--tennis-green)] transition-all duration-500">
+                        <i data-lucide="facebook" class="w-8 h-8 text-white group-hover:text-slate-950 transition-colors"></i>
+                    </div>
+                    <span class="text-xl font-bold mb-2">Facebook</span>
+                    <span class="text-xs text-slate-500 uppercase tracking-widest" data-zh="官方粉絲專頁" data-en="Official Page">官方粉絲專頁</span>
+                </a>
+                <!-- IG -->
+                <a href="https://www.instagram.com/rayho_0213?igsh=YzE1Y3M5cjdxMmtn" target="_blank" class="social-icon-btn group" style="transition-delay: 0.1s">
+                    <div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mb-6 group-hover:bg-[var(--tennis-green)] transition-all duration-500">
+                        <i data-lucide="instagram" class="w-8 h-8 text-white group-hover:text-slate-950 transition-colors"></i>
+                    </div>
+                    <span class="text-xl font-bold mb-2">Instagram</span>
+                    <span class="text-xs text-slate-500 uppercase tracking-widest" data-zh="職業生活紀實" data-en="Pro Life Feed">職業生活紀實</span>
+                </a>
+                <!-- TikTok -->
+                <a href="https://v.douyin.com/XEShwVvej44/" target="_blank" class="social-icon-btn group" style="transition-delay: 0.2s">
+                    <div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mb-6 group-hover:bg-[var(--tennis-green)] transition-all duration-500">
+                        <svg class="w-8 h-8 fill-current text-white group-hover:text-slate-950 transition-colors" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.36-.54.38-.89.96-.99 1.6-.14.76.14 1.53.73 2.01.58.48 1.35.61 2.06.41.67-.18 1.22-.64 1.55-1.24.16-.31.25-.65.25-1 .02-3.68-.01-7.35.02-11.02Z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold mb-2">TikTok</span>
+                    <span class="text-xs text-slate-500 uppercase tracking-widest" data-zh="精彩影音紀錄" data-en="Short Clips">精彩影音紀錄</span>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- 頁尾 -->
     <footer class="py-24 px-6 border-t border-white/5 bg-slate-950">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col lg:flex-row justify-between items-start gap-20 mb-20">
-                <div class="max-w-md">
-                    <div class="text-5xl font-black text-gradient mb-10 italic tracking-tighter">RAY HO</div>
-                    <div class="flex gap-6">
-                        <a href="https://www.facebook.com/profile.php?id=61552545600627" target="_blank" class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center hover:bg-[var(--tennis-green)] hover:text-slate-950 transition-all duration-500">
-                            <i data-lucide="facebook" class="w-6 h-6"></i>
-                        </a>
-                        <a href="https://www.instagram.com/rayho_official/" target="_blank" class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center hover:bg-[var(--tennis-green)] hover:text-slate-950 transition-all duration-500">
-                            <i data-lucide="instagram" class="w-6 h-6"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-24 text-slate-500 text-xs font-bold uppercase tracking-widest">
-                    <ul class="space-y-4">
-                        <li><a href="#home" class="hover:text-white transition">Home</a></li>
-                        <li><a href="#bio" class="hover:text-white transition">Bio</a></li>
-                        <li><a href="#gallery" class="hover:text-white transition">Gallery</a></li>
-                    </ul>
-                </div>
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="flex justify-center items-center gap-8 mb-12 text-white">
+                <a href="https://www.facebook.com/people/%E4%BD%95%E6%89%BF%E5%8F%A1%E7%B6%B2%E7%90%83/61552545600627/" target="_blank" class="social-icon">
+                    <i data-lucide="facebook" class="w-6 h-6"></i>
+                </a>
+                <a href="https://www.instagram.com/rayho_0213?igsh=YzE1Y3M5cjdxMmtn" target="_blank" class="social-icon">
+                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                </a>
+                <a href="https://v.douyin.com/XEShwVvej44/" target="_blank" class="social-icon">
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.36-.54.38-.89.96-.99 1.6-.14.76.14 1.53.73 2.01.58.48 1.35.61 2.06.41.67-.18 1.22-.64 1.55-1.24.16-.31.25-.65.25-1 .02-3.68-.01-7.35.02-11.02Z"/>
+                    </svg>
+                </a>
             </div>
-            <div class="pt-12 border-t border-white/5 text-slate-700 text-[10px] text-center uppercase tracking-[0.3em] font-black">
+
+            <div class="pt-12 border-t border-white/5 text-slate-700 text-[10px] uppercase tracking-[0.3em] font-black">
                 <p>© 2026 RAY HO OFFICIAL. ALL RIGHTS RESERVED.</p>
             </div>
         </div>
@@ -297,7 +365,6 @@
     <script>
         lucide.createIcons();
 
-        // 圖片載入失敗處理
         function handleImgError(img, iconName, labelText) {
             img.style.display = 'none';
             const container = img.parentElement;
@@ -313,7 +380,6 @@
             lucide.createIcons();
         }
 
-        // 語言切換
         const langToggle = document.getElementById('lang-toggle');
         const langText = document.getElementById('lang-text');
         let currentLang = 'zh';
@@ -328,17 +394,30 @@
             langText.textContent = currentLang === 'zh' ? 'EN' : '中文';
         });
 
-        // 捲動動畫
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('main-nav');
-            if (window.scrollY > 100) nav.classList.add('nav-scrolled');
-            else nav.classList.remove('nav-scrolled');
-            
-            document.querySelectorAll('.reveal').forEach(reveal => {
-                if (reveal.getBoundingClientRect().top < window.innerHeight - 100) reveal.classList.add('active');
+        function handleReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(reveal => {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveal.getBoundingClientRect().top;
+                if (revealTop < windowHeight - 50) {
+                    reveal.classList.add('active');
+                }
             });
+        }
+
+        window.addEventListener('scroll', handleReveal);
+        window.addEventListener('load', () => {
+            handleReveal();
+            setTimeout(() => {
+                document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+            }, 1500);
         });
-        window.dispatchEvent(new Event('scroll'));
+
+        const nav = document.getElementById('main-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) nav.classList.add('nav-scrolled');
+            else nav.classList.remove('nav-scrolled');
+        });
     </script>
 </body>
 </html>
