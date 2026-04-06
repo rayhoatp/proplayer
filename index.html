@@ -124,6 +124,7 @@
                     <a href="#home" class="hover:text-[var(--tennis-green)] hover:opacity-100 transition" data-zh="首頁" data-en="Home">首頁</a>
                     <a href="#bio" class="hover:text-[var(--tennis-green)] hover:opacity-100 transition" data-zh="個人檔案" data-en="Bio">個人檔案</a>
                     <a href="#gallery" class="hover:text-[var(--tennis-green)] hover:opacity-100 transition" data-zh="榮耀影像" data-en="Gallery">榮耀影像</a>
+                    <!-- 確認導覽連結為 scheduling.html -->
                     <a href="scheduling.html" class="hover:text-[var(--tennis-green)] hover:opacity-100 transition" data-zh="2026 賽程" data-en="Schedule">2026 賽程</a>
                     <a href="#news" class="hover:text-[var(--tennis-green)] hover:opacity-100 transition" data-zh="最新動態" data-en="News">最新動態</a>
                     <a href="#social" class="hover:text-[var(--tennis-green)] hover:opacity-100 transition" data-zh="社群追蹤" data-en="Social">社群追蹤</a>
@@ -164,6 +165,7 @@
             </p>
 
             <div class="flex flex-col sm:flex-row justify-center gap-6 reveal active">
+                <!-- 確認按鈕連結為 scheduling.html -->
                 <a href="scheduling.html" class="px-12 py-5 bg-[var(--tennis-green)] text-slate-950 font-black rounded-full hover:scale-105 active:scale-95 transition-all flex items-center justify-center uppercase text-xs tracking-widest shadow-2xl shadow-[var(--tennis-green)]/20">
                     <span data-zh="2026 賽程規劃" data-en="2026 Schedule">2026 賽程規劃</span> <i data-lucide="calendar" class="ml-2 w-4 h-4"></i>
                 </a>
@@ -180,9 +182,9 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
                 <div class="relative reveal">
                     <div class="aspect-[4/5] rounded-[2rem] bg-slate-900 overflow-hidden border border-white/5 relative shadow-2xl group">
-                         <!-- 核心修正：將影像路徑連結至 GitHub 中的 01.jpg -->
-                         <img src="01.jpg" id="bio-img" alt="Ray Ho Profile" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
-                              onerror="handleImgError(this, 'user', 'PHOTO NOT FOUND')">
+                         <!-- 保持官方影像網址 -->
+                         <img src="https://www.cwb-championscup.hk/wp-content/uploads/2025/09/Ray-Ho.png" id="bio-img" alt="Ray Ho Profile" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
+                              onerror="handleImgError(this, 'user', 'IMAGE UNAVAILABLE')">
                          <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
                          <div class="absolute bottom-10 left-10 text-left">
                             <div class="text-[10px] text-[var(--tennis-green)] font-black uppercase tracking-[0.4em] mb-3">Professional Athlete</div>
@@ -327,7 +329,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
-                <!-- FB -->
                 <a href="https://www.facebook.com/people/%E4%BD%95%E6%89%BF%E5%8F%A1%E7%B6%B2%E7%90%83/61552545600627/" target="_blank" class="social-card group">
                     <div class="social-img-frame">
                         <img src="https://img.icons8.com/color/144/facebook-new.png" alt="Facebook" class="!w-8 !h-8">
@@ -335,7 +336,6 @@
                     <span class="text-xl font-bold mb-2">Facebook</span>
                     <span class="text-xs text-slate-500 uppercase tracking-widest" data-zh="官方粉絲專頁" data-en="Official Page">官方粉絲專頁</span>
                 </a>
-                <!-- IG -->
                 <a href="https://www.instagram.com/rayho_0213?igsh=YzE1Y3M5cjdxMmtn" target="_blank" class="social-card group" style="transition-delay: 0.1s">
                     <div class="social-img-frame">
                         <img src="https://img.icons8.com/color/144/instagram-new--v1.png" alt="Instagram" class="!w-8 !h-8">
@@ -343,7 +343,6 @@
                     <span class="text-xl font-bold mb-2">Instagram</span>
                     <span class="text-xs text-slate-500 uppercase tracking-widest" data-zh="職業生活紀實" data-en="Pro Life Feed">職業生活紀實</span>
                 </a>
-                <!-- TikTok -->
                 <a href="https://v.douyin.com/XEShwVvej44/" target="_blank" class="social-card group" style="transition-delay: 0.2s">
                     <div class="social-img-frame bg-black">
                         <svg class="w-7 h-7 fill-current text-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
