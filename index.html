@@ -112,10 +112,10 @@
         }
     </style>
 </head>
-<body class="overflow-x-hidden">
+<body class="overflow-x-hidden text-center">
 
     <!-- 導覽列 -->
-    <nav id="main-nav" class="fixed w-full z-50 transition-all duration-300 px-6 py-6">
+    <nav id="main-nav" class="fixed w-full z-50 transition-all duration-300 px-6 py-6 text-left">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="text-2xl font-black tracking-tighter text-gradient italic">RAY HO</div>
             
@@ -139,7 +139,7 @@
 
     <!-- 英雄區塊 (Banner) -->
     <section id="home" class="relative min-h-[700px] flex items-center justify-center pt-20 px-6 overflow-hidden bg-[var(--dark-navy)]">
-        <div class="relative z-10 max-w-7xl mx-auto text-center">
+        <div class="relative z-10 max-w-7xl mx-auto">
             <div class="reveal active mb-8">
                 <button class="pill-btn">
                     <span data-zh="ATP 職業選手" data-en="ATP PROFESSIONAL PLAYER">ATP 職業選手</span>
@@ -164,7 +164,7 @@
             </p>
 
             <div class="flex flex-col sm:flex-row justify-center gap-6 reveal active">
-                <a href="scheduling.html" class="px-12 py-5 bg-[var(--tennis-green)] text-slate-950 font-black rounded-full hover:scale-105 active:scale-95 transition-all flex items-center justify-center uppercase text-xs tracking-widest">
+                <a href="scheduling.html" class="px-12 py-5 bg-[var(--tennis-green)] text-slate-950 font-black rounded-full hover:scale-105 active:scale-95 transition-all flex items-center justify-center uppercase text-xs tracking-widest shadow-2xl shadow-[var(--tennis-green)]/20">
                     <span data-zh="2026 賽程規劃" data-en="2026 Schedule">2026 賽程規劃</span> <i data-lucide="calendar" class="ml-2 w-4 h-4"></i>
                 </a>
                 <a href="#gallery" class="px-12 py-5 bg-white/5 border border-white/10 text-white font-black rounded-full hover:bg-white/10 transition-all flex items-center justify-center text-xs tracking-widest uppercase">
@@ -175,13 +175,14 @@
     </section>
 
     <!-- 選手檔案 Bio -->
-    <section id="bio" class="py-32 px-6 relative">
+    <section id="bio" class="py-32 px-6 relative text-left">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
                 <div class="relative reveal">
                     <div class="aspect-[4/5] rounded-[2rem] bg-slate-900 overflow-hidden border border-white/5 relative shadow-2xl group">
-                         <img src="https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-1/380700650_10162533193146729_2379134611963304810_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=1&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=ZnFE1edjGWcQ7kNvwF5wvLF&_nc_oc=AdoP1vP4FbHWBN8Fefr4YjlkxQG_ckAKjedXZIYmyIpqv9F-HoHSL8xI2k4mW7dxgS0&_nc_zt=24&_nc_ht=scontent-tpe1-1.xx&_nc_gid=hiFbe7PikyhV_qXg152AJA&_nc_ss=7a389&oh=00_Af3pC6edkR-0xRXwLxzPSmks56f_fncqk5YXLHY5x_u1bA&oe=69D9024E" id="bio-img" alt="Ray Ho Profile" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
-                              onerror="this.src='https://images.unsplash.com/photo-1595435063821-26c7104ae05d?auto=format&fit=crop&q=80'">
+                         <!-- 核心修正：將影像路徑連結至 GitHub 中的 01.jpg -->
+                         <img src="01.jpg" id="bio-img" alt="Ray Ho Profile" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
+                              onerror="handleImgError(this, 'user', 'PHOTO NOT FOUND')">
                          <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
                          <div class="absolute bottom-10 left-10 text-left">
                             <div class="text-[10px] text-[var(--tennis-green)] font-black uppercase tracking-[0.4em] mb-3">Professional Athlete</div>
@@ -194,7 +195,7 @@
                     </div>
                 </div>
 
-                <div class="space-y-12 reveal text-left" style="transition-delay: 0.2s">
+                <div class="space-y-12 reveal" style="transition-delay: 0.2s">
                     <div>
                         <h2 class="text-6xl font-black mb-8 text-white italic tracking-tighter uppercase leading-none">
                             <span data-zh="選手檔案" data-en="Player">選手檔案</span> <br>
@@ -283,9 +284,9 @@
                 <div class="w-20 h-1 bg-[var(--tennis-green)] mx-auto mb-8"></div>
             </div>
 
-            <div class="max-w-4xl mx-auto reveal">
+            <div class="max-w-4xl mx-auto reveal text-left">
                 <div class="grid grid-cols-1 gap-6">
-                    <a href="https://sports.ltn.com.tw/news/breakingnews/5344432" target="_blank" class="group p-8 rounded-[2.5rem] bg-white/5 border border-white/5 hover:border-[var(--tennis-green)]/30 transition-all cursor-pointer block hover-lift text-left">
+                    <a href="https://sports.ltn.com.tw/news/breakingnews/5344432" target="_blank" class="group p-8 rounded-[2.5rem] bg-white/5 border border-white/5 hover:border-[var(--tennis-green)]/30 transition-all cursor-pointer block hover-lift">
                         <div class="text-[var(--tennis-green)] text-[10px] font-black mb-3 flex justify-between items-center">
                             <span>2026.02.16</span>
                             <i data-lucide="external-link" class="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity"></i>
@@ -293,7 +294,7 @@
                         <h4 class="text-2xl font-bold text-white group-hover:text-[var(--tennis-green)] transition mb-4" data-zh="ATP 500 鹿特丹公開賽 榮獲亞軍，排名創生涯新高第 60 名" data-en="Rotterdam Open (ATP 500) Runner-up, Career High World No. 60">ATP 500 鹿特丹公開賽 榮獲亞軍，排名創生涯新高第 60 名</h4>
                         <p class="text-slate-400 leading-relaxed text-sm" data-zh="攜手 Hendrik Jebens 展現精湛默契，創下台灣選手在該等級賽事最佳紀錄。" data-en="Partnered with Hendrik Jebens, setting a new milestone.">攜手 Hendrik Jebens 展現精湛默契，創下台灣選手在該等級賽事最佳紀錄。</p>
                     </a>
-                    <a href="https://www.chinatimes.com/realtimenews/20260122002116-260403?chdtv" target="_blank" class="group p-8 rounded-[2.5rem] bg-white/5 border border-white/5 hover:border-[var(--tennis-green)]/30 transition-all cursor-pointer block hover-lift text-left">
+                    <a href="https://www.chinatimes.com/realtimenews/20260122002116-260403?chdtv" target="_blank" class="group p-8 rounded-[2.5rem] bg-white/5 border border-white/5 hover:border-[var(--tennis-green)]/30 transition-all cursor-pointer block hover-lift">
                         <div class="text-[var(--tennis-green)] text-[10px] font-black mb-3 flex justify-between items-center">
                             <span>2026.01</span>
                             <i data-lucide="external-link" class="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity"></i>
@@ -301,7 +302,7 @@
                         <h4 class="text-2xl font-bold text-white group-hover:text-[var(--tennis-green)] transition mb-4" data-zh="澳洲網球公開賽 男雙成功闖入第二輪" data-en="Australian Open: Reaches Second Round">澳洲網球公開賽 男雙成功闖入第二輪</h4>
                         <p class="text-slate-400 leading-relaxed text-sm" data-zh="在墨爾本球場穩定發揮，持續在大滿貫賽場累積寶貴經驗。" data-en="Solid performance on the Grand Slam stage.">在墨爾本球場穩定發揮，持續在大滿貫賽場累積寶貴經驗。</p>
                     </a>
-                    <a href="https://sports.ltn.com.tw/news/breakingnews/5197681" target="_blank" class="group p-8 rounded-[2.5rem] bg-white/5 border border-white/5 hover:border-[var(--tennis-green)]/30 transition-all cursor-pointer block hover-lift text-left">
+                    <a href="https://sports.ltn.com.tw/news/breakingnews/5197681" target="_blank" class="group p-8 rounded-[2.5rem] bg-white/5 border border-white/5 hover:border-[var(--tennis-green)]/30 transition-all cursor-pointer block hover-lift">
                         <div class="text-[var(--tennis-green)] text-[10px] font-black mb-3 flex justify-between items-center">
                             <span>2025.10</span>
                             <i data-lucide="external-link" class="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity"></i>
@@ -360,7 +361,6 @@
     <footer class="py-32 px-6 border-t border-white/5 bg-slate-950 text-center">
         <div class="max-w-7xl mx-auto">
             <div class="flex justify-center items-center gap-10 mb-16 text-white/30">
-                <!-- 僅保留 FB 與 IG -->
                 <a href="https://www.facebook.com/people/%E4%BD%95%E6%89%BF%E5%8F%A1%E7%B6%B2%E7%90%83/61552545600627/" target="_blank" class="hover:text-[var(--tennis-green)] transition">
                     <i data-lucide="facebook" class="w-6 h-6"></i>
                 </a>
