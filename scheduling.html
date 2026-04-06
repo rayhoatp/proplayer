@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ray Ho | 2026 Spring Tournament Plan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .oswald { font-family: 'Oswald', sans-serif; }
+        .tournament-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .tournament-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .surface-hard { border-left: 6px solid #3b82f6; }
+        .surface-clay { border-left: 6px solid #ea580c; }
+        .hero-image {
+            /* 調整人物水平定位，使其在圓框中偏右側並置中 */
+            object-position: 43% 20%;
+        }
+        .highlight-glow {
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+        }
+        .score-badge {
+            background: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            color: #64748b;
+            font-family: monospace;
+        }
+        .lang-btn {
+            transition: all 0.2s ease;
+        }
+        .lang-btn.active {
+            background-color: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+    </style>
+</head>
+<body class="text-slate-900">
+
+    <!-- 導覽列 -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-tighter oswald uppercase">
+                RAY HO <span class="text-blue-600 ml-1" id="nav-name">何承叡</span>
+            </div>
+            <!-- 語系切換標籤 -->
+            <div class="flex items-center space-x-1 bg-slate-100 p-1 rounded-lg border border-slate-200">
+                <button onclick="setLanguage('en')" id="btn-en" class="lang-btn px-3 py-1 text-xs font-bold rounded-md border border-transparent">EN</button>
+                <button onclick="setLanguage('zh')" id="btn-zh" class="lang-btn active px-3 py-1 text-xs font-bold rounded-md border border-transparent">中文</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄區塊 -->
+    <header class="relative bg-slate-900 text-white py-16 md:py-24 overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-900 via-slate-900 to-transparent"></div>
+        </div>
+        <div class="relative max-w-6xl mx-auto px-6 text-center md:text-left flex flex-col md:flex-row items-center justify-between">
+            <div class="z-10 order-2 md:order-1 mt-10 md:mt-0">
+                <div class="inline-block bg-blue-600 text-[10px] font-bold px-2 py-1 rounded mb-4 uppercase tracking-widest" data-t="atp_pro">ATP WORLD TOUR PROFESSIONAL</div>
+                <h1 class="text-5xl md:text-7xl font-bold oswald uppercase mb-4 tracking-tight leading-tight" id="hero-title">
+                    2026 Spring<br><span class="text-blue-500" data-t="plan_activity">Plan & Activity</span>
+                </h1>
+                <p class="text-slate-400 text-lg max-w-md uppercase tracking-widest mb-8">
+                    <span data-t="last_update">最新戰報更新於：</span> 2026.04.06
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                    <div class="bg-white/10 px-4 py-2 rounded-lg backdrop-blur-sm border border-white/10">
+                        <span class="block text-xs text-slate-400 uppercase" data-t="live_rank">Live Doubles Rank</span>
+                        <span class="text-2xl font-bold oswald italic">#63 <span class="text-xs font-normal text-slate-400 ml-1">Live</span></span>
+                    </div>
+                    <div class="bg-white/10 px-4 py-2 rounded-lg backdrop-blur-sm border border-white/10">
+                        <span class="block text-xs text-slate-400 uppercase" data-t="main_partner">Main Partner</span>
+                        <span class="text-2xl font-bold oswald italic uppercase">H. Jebens</span>
+                    </div>
+                </div>
+            </div>
+            <div class="relative order-1 md:order-2">
+                <!-- 選手照片 -->
+                <div class="w-64 h-64 md:w-96 md:h-96 bg-slate-800 rounded-full border-8 border-slate-700/50 flex items-center justify-center overflow-hidden shadow-2xl">
+                    <img 
+                        src="https://media.zenfs.com/zh-tw/setn.com.tw/f9e5f8c065726fd466e7a703297fa99b" 
+                        alt="Ray Ho 何承叡" 
+                        class="w-full h-full object-cover hero-image"
+                    >
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 賽程區域 -->
+    <main class="max-w-5xl mx-auto px-6 py-16">
+        
+        <!-- 一月 -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold oswald uppercase mb-8 border-l-4 border-blue-600 pl-4 flex items-center">
+                <span data-t="month_jan">January</span> <span class="text-slate-300 ml-4 font-light italic" data-t="jan_sub">The Australian Summer</span>
+            </h2>
+            <div class="grid gap-6">
+                <div class="tournament-card bg-white p-6 rounded-xl border border-slate-100 flex flex-col md:flex-row md:items-center justify-between surface-hard shadow-sm">
+                    <div class="flex-1">
+                        <div class="flex items-center space-x-2 mb-1">
+                            <span class="text-[10px] bg-red-100 text-red-600 font-bold px-2 py-0.5 rounded">GRAND SLAM</span>
+                            <span class="text-xs font-bold text-slate-400 uppercase">Jan 19 - Feb 01</span>
+                        </div>
+                        <h3 class="text-xl font-bold" data-t="tourn_ao">Australian Open 澳洲網球公開賽</h3>
+                        <p class="text-sm text-slate-500 mb-2"><span data-t="label_partner">Partner</span>: Hendrik Jebens</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="score-badge" data-t="ao_r1">R1: Def. Bolelli/Vavassori 6-7, 7-6, 6-4</span>
+                            <span class="score-badge" data-t="ao_r2">R2: L. v Johnson/Zielinski 7-6, 4-6, 4-6</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 md:mt-0 text-right">
+                        <span class="text-xs text-slate-400 uppercase block" data-t="label_result">Result</span>
+                        <span class="font-bold text-slate-700 italic" data-t="res_r2">2nd Round</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 二月 -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold oswald uppercase mb-8 border-l-4 border-blue-600 pl-4 flex items-center">
+                <span data-t="month_feb">February</span> <span class="text-slate-300 ml-4 font-light italic" data-t="feb_sub">The Big Breakthrough</span>
+            </h2>
+            <div class="grid gap-6">
+                <div class="tournament-card bg-white p-8 rounded-2xl border-2 border-blue-500 flex flex-col md:flex-row md:items-center justify-between surface-hard shadow-lg relative highlight-glow">
+                    <div class="absolute -top-4 left-6 bg-blue-600 text-white text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-widest shadow-md" data-t="season_highlight">Season Highlight</div>
+                    <div class="flex-1">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span class="text-[10px] bg-blue-100 text-blue-700 font-bold px-2 py-0.5 rounded">ATP 500</span>
+                            <span class="text-xs font-bold text-slate-400 uppercase">Feb 09 - Feb 15</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-1">Rotterdam ATP 500</h3>
+                        <p class="text-sm text-slate-600 mb-4"><span data-t="label_partner">Partner</span>: Hendrik Jebens</p>
+                        <div class="space-y-2 text-xs">
+                            <div class="flex items-center"><span class="w-16 font-bold text-slate-400 uppercase">Final:</span> <span data-t="rot_f">L. v Bolelli/Vavassori 3-6, 4-6</span></div>
+                            <div class="flex items-center"><span class="w-16 font-bold text-green-600 uppercase">Semi:</span> <span data-t="rot_sf">Def. Arevalo/Pavic 6-3, 1-6, 11-9</span></div>
+                            <div class="flex items-center"><span class="w-16 font-bold text-green-600 uppercase">QF:</span> <span data-t="rot_qf">Def. Gonzalez/Pel 6-2, 6-4</span></div>
+                        </div>
+                    </div>
+                    <div class="mt-8 md:mt-0 text-center md:text-right bg-slate-50 md:bg-transparent p-4 rounded-xl">
+                        <span class="text-xs text-slate-400 uppercase block mb-1" data-t="label_tourn_achieve">Tournament Achievement</span>
+                        <span class="font-black text-blue-600 italic text-3xl" data-t="res_runnerup">RUNNER-UP</span>
+                        <div class="text-xs text-slate-500 mt-1 italic" data-t="rot_note">Qualifying to Final Run</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 三月 -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold oswald uppercase mb-8 border-l-4 border-blue-600 pl-4 flex items-center">
+                <span data-t="month_mar">March</span> <span class="text-slate-300 ml-4 font-light italic" data-t="mar_sub">USA Swing</span>
+            </h2>
+            <div class="grid gap-6">
+                <div class="tournament-card bg-white p-6 rounded-xl border border-slate-100 flex flex-col md:flex-row md:items-center justify-between surface-hard shadow-sm">
+                    <div class="flex-1">
+                        <div class="text-xs font-bold text-slate-400 uppercase mb-1">Mar 09 - Mar 15 | Challenger 175</div>
+                        <h3 class="text-xl font-bold">Phoenix Tennis Classic</h3>
+                        <p class="text-sm text-slate-500 mb-2"><span data-t="label_partner">Partner</span>: Marcus Willis</p>
+                        <span class="score-badge" data-t="phx_r1">R1: L. v Cash/Tracy 4-6, 6-4, 7-10</span>
+                    </div>
+                    <div class="mt-4 md:mt-0 text-right"><span class="font-bold text-slate-400 uppercase">R1</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 紅土賽季展望 -->
+        <section class="relative bg-orange-600 rounded-3xl p-8 md:p-12 text-white overflow-hidden shadow-2xl">
+            <div class="relative z-10">
+                <span class="text-orange-200 font-bold uppercase tracking-[0.3em] text-xs" data-t="next_phase">Next Phase</span>
+                <h2 class="text-4xl md:text-5xl font-bold oswald uppercase mt-2 mb-6" data-t="clay_season">European Clay Season</h2>
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="bg-black/20 backdrop-blur-md p-6 rounded-2xl flex-1 border border-white/10 ring-2 ring-white/30">
+                        <div class="text-orange-200 text-xs font-bold uppercase mb-2 flex items-center">
+                            <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
+                            <span data-t="cur_activity">Current Activity</span>
+                        </div>
+                        <h4 class="text-xl font-bold mb-1">Atkinsons Monza Open 2026</h4>
+                        <p class="text-orange-100 text-sm italic">Monza, Italy | ATP Challenger | Clay</p>
+                    </div>
+                    <div class="bg-black/20 backdrop-blur-md p-6 rounded-2xl flex-1 border border-white/10">
+                        <div class="text-orange-200 text-xs font-bold uppercase mb-2" data-t="major_target">Major Target</div>
+                        <h4 class="text-xl font-bold mb-1">Roland-Garros 2026</h4>
+                        <p class="text-orange-100 text-sm" data-t="rg_date">May 24 Start | Grand Slam</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 頁尾 -->
+    <footer class="bg-white border-t border-slate-200 py-16">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <div class="text-3xl font-bold oswald uppercase mb-4 tracking-tighter">RAY HO <span class="text-blue-600" id="footer-name">何承叡</span></div>
+            <div class="flex justify-center space-x-8 mb-12 text-xs font-bold uppercase tracking-widest text-slate-400">
+                <a href="#" class="hover:text-blue-600 transition">Instagram</a>
+                <a href="#" class="hover:text-blue-600 transition">Facebook</a>
+                <a href="#" class="hover:text-blue-600 transition">ATP Profile</a>
+            </div>
+            <p class="text-slate-300 text-[9px] uppercase tracking-[0.4em]">&copy; 2026 Ray Ho Official Media.</p>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                name: "RAY HO",
+                atp_pro: "ATP WORLD TOUR PROFESSIONAL",
+                plan_activity: "Plan & Activity",
+                last_update: "Latest update: ",
+                live_rank: "Live Doubles Rank",
+                main_partner: "Main Partner",
+                month_jan: "January",
+                jan_sub: "The Australian Summer",
+                tourn_ao: "Australian Open",
+                label_partner: "Partner",
+                ao_r1: "R1: Def. Bolelli/Vavassori 6-7, 7-6, 6-4",
+                ao_r2: "R2: L. v Johnson/Zielinski 7-6, 4-6, 4-6",
+                label_result: "Result",
+                res_r2: "2nd Round",
+                month_feb: "February",
+                feb_sub: "The Big Breakthrough",
+                season_highlight: "Season Highlight",
+                rot_f: "L. v Bolelli/Vavassori 3-6, 4-6",
+                rot_sf: "Def. Arevalo/Pavic 6-3, 1-6, 11-9",
+                rot_qf: "Def. Gonzalez/Pel 6-2, 6-4",
+                label_tourn_achieve: "Tournament Achievement",
+                res_runnerup: "RUNNER-UP",
+                rot_note: "Qualifying to Final Run",
+                month_mar: "March",
+                mar_sub: "USA Swing",
+                phx_r1: "R1: L. v Cash/Tracy 4-6, 6-4, 7-10",
+                next_phase: "Next Phase",
+                clay_season: "European Clay Season",
+                cur_activity: "Current Activity",
+                major_target: "Major Target",
+                rg_date: "May 24 Start | Grand Slam"
+            },
+            zh: {
+                name: "何承叡",
+                atp_pro: "ATP 職業網球選手",
+                plan_activity: "賽程規劃與動態",
+                last_update: "最新戰報更新於：",
+                live_rank: "即時雙打排名",
+                main_partner: "主要搭檔",
+                month_jan: "一月",
+                jan_sub: "澳洲夏季賽季",
+                tourn_ao: "澳洲網球公開賽",
+                label_partner: "搭檔",
+                ao_r1: "第一輪：擊敗 Bolelli/Vavassori 6-7, 7-6, 6-4",
+                ao_r2: "第二輪：負於 Johnson/Zielinski 7-6, 4-6, 4-6",
+                label_result: "最終結果",
+                res_r2: "第二輪",
+                month_feb: "二月",
+                feb_sub: "職業生涯重大突破",
+                season_highlight: "賽季亮點",
+                rot_f: "決賽：負於 Bolelli/Vavassori 3-6, 4-6",
+                rot_sf: "四強：擊敗 Arevalo/Pavic 6-3, 1-6, 11-9",
+                rot_qf: "八強：擊敗 Gonzalez/Pel 6-2, 6-4",
+                label_tourn_achieve: "賽事成就",
+                res_runnerup: "亞軍 🥈",
+                rot_note: "從資格賽一路殺進決賽",
+                month_mar: "三月",
+                mar_sub: "北美硬地賽季",
+                phx_r1: "第一輪：負於 Cash/Tracy 4-6, 6-4, 7-10",
+                next_phase: "下一階段",
+                clay_season: "歐洲紅土賽季",
+                cur_activity: "目前賽事",
+                major_target: "重點目標",
+                rg_date: "5 月 24 日開打 | 大滿貫"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+            
+            document.getElementById('nav-name').innerText = (lang === 'zh' ? '何承叡' : '');
+            document.getElementById('footer-name').innerText = (lang === 'zh' ? '何承叡' : '');
+
+            document.querySelectorAll('[data-t]').forEach(el => {
+                const key = el.getAttribute('data-t');
+                if (translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+
+            const heroTitle = document.getElementById('hero-title');
+            if (lang === 'en') {
+                heroTitle.innerHTML = '2026 Spring<br><span class="text-blue-500">Plan & Activity</span>';
+            } else {
+                heroTitle.innerHTML = '2026 春季<br><span class="text-blue-500">賽程規劃與動態</span>';
+            }
+        }
+
+        window.onload = () => setLanguage('zh');
+    </script>
+</body>
+</html>
